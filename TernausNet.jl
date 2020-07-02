@@ -14,7 +14,7 @@ function EncoderBlock(ifilters, ofilters, depth)
   return EncoderBlock(Chain(layers...))
 end
 
-function (e::EncoderBlock)(x) = e.downsample(x)
+(e::EncoderBlock)(x) = e.downsample(x)
 
 struct DecoderBlock
   upsample
