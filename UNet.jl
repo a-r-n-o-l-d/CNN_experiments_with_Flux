@@ -30,7 +30,7 @@ function conv3x3(filters; downsample)
   return layers
 end
 
-conv3x3(ifilters, ofilters) = conv3x3(ifilters, ofilters, downsample=false)
+conv3x3(filters) = conv3x3(filters, downsample=false)
 
 struct DecoderBlock
   upsample
