@@ -26,10 +26,10 @@ end
 function DecoderBlock(ifilters, mfilters, ofilters, bridge)
   conv = Conv((3,3), ifilters=>mfilters, relu, pad=(1,1))
   upconv = ConvTranspose((4,4), mfilters=>ofilters, relu, stride=(2,2), pad=(1,1)) #(4,4) stride(2,2) #https://github.com/ternaus/robot-surgery-segmentation
-  return DecodeBlocks(Chain(conv, upconv))
+  return DecoderBlock(Chain(conv, upconv))
 end
 
-function (d::DecoderBlock)(x, bridge) = return cat(d.upsample(x), bridge, dims=3)
+(d::DecoderBlock)(x, bridge) = cat(d.upsample(x), bridge, dims=3)
 #function (d::DecoderBlock)(x) = return d.upsample(x)
 
 struct TernausNet
